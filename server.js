@@ -4,15 +4,15 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
-var express = require("express");
+let express = require("express");
 
 // Sets up the Express App
 // =============================================================
-var app = express();
-var PORT = process.env.PORT || 8080;
+let app = express();
+let PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
-var db = require("./models");
+let db = require("./models");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
