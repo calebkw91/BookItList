@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "linst": "eslint ./**/*.js",
+    "lint": "eslint ./**/*.js",
     "test": "npm run lint",
     "start": "node server.js",
     "fix": "eslint --fix ."
