@@ -1,17 +1,22 @@
 $(function () {
-    $('.create-form').on('submit', function (event) {
+    $('#addBook').on('click', function (event) {
     // Make sure to preventDefault on a submit event.
         event.preventDefault();
 
         let newBookit = {
-            title: $('#newBookit').val().trim(),
-            bookedIt: 0,
+            title: $('#title').val().trim(),
+            author: $('#author').val().trim(),
+            genre: $('#genre').val().trim(),
+            year: $('#year').val().trim(),
+            pages: $('#pages').val().trim(),
+            userNotes: $('#userNotes').val().trim(),
+            UserId: $('#userId').val().trim(),
             // eslint-disable-next-line camelcase
-            create_at: new Date(),
+            createAt: new Date(),
         };
         console.log(newBookit);
         // Send the POST request.
-        $.ajax('/api/bookits', {
+        $.ajax('/api/books', {
             type: 'POST',
             data: newBookit,
         }).then(function () {

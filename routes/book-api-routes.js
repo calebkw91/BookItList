@@ -23,11 +23,12 @@ module.exports = function(app) {
     //     });
     // });
 
-    // app.post('/api/books', (req, res) => {
-    //     db.Book.create(req.body).then((book) => {
-    //         res.json(book);
-    //     });
-    // });
+    app.post('/api/books', (req, res) => {
+        console.log(req.body);
+        db.Book.create(req.body).then((book) => {
+            res.json(book);
+        });
+    });
 
     // app.delete('/api/books/:id', (req, res) => {
     //     db.Book.destroy({
