@@ -1,14 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<h1>Bookit List</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookIt List</title>
-</head>
+<form class="create-form">
+    <div class="form-group">
+        <label for="addBookit" class="addToBookit">Add to Bookitlist:</label>
+        <input type="text" id="newBookit" name="addBookit">
+        <button class="book-submit btn-success" type="submit"><i class="fas fa-book-reader"></i></button>
+    </div>
+</form>
+<br>
+<div class="row">
+    <div class="notBooked col-md-6">
+        <h2>Bookit List</h2>
 
-<body>
+        <ul>
+            {{#each title}}
+            {{#unless bookedIt}}
 
-</body>
+            {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
 
-</html>
+
+    <div class="Booked col-md-6">
+        <h2>Booked It List</h2>
+        <ul>
+            {{#each title}}
+            {{#if bookedIt}}
+
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
