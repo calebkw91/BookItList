@@ -2,7 +2,14 @@ let db = require('../models');
 
 module.exports = function(app) {
     app.get('/', (req, res) => {
-        res.render('index');
+        db.Book.findAll({}).then(data => {
+            let books = [];
+            data.forEach((item) => {
+                books.push(item.dataValues);
+            });
+            let hbsObject = { books: books};
+            res.render('index', hbsObject);
+        });
     });
 
     // app.get('/api/books', (req, res) => {
