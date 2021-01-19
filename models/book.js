@@ -35,14 +35,14 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    Book.associate = (models) => {
-        models.Book.belongsTo(models.User, {
-            onDelete: 'CASCADE',
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Book.associate = (models) => {
+    //     models.Book.belongsTo(models.User, {
+    //         onDelete: 'CASCADE',
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
 
     return Book;
 };

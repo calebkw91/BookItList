@@ -10,11 +10,10 @@ $(function () {
             year: $('#year').val().trim(),
             pages: $('#pages').val().trim(),
             userNotes: $('#userNotes').val().trim(),
-            UserId: $('#userId').val().trim(),
             // eslint-disable-next-line camelcase
-            createAt: new Date(),
+            // createAt: new Date(),
         };
-        console.log(newBookit);
+
         // Send the POST request.
         $.ajax('/api/books', {
             type: 'POST',

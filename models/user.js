@@ -23,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    User.associate = (models) => {
-        models.User.hasMany(models.Book, {
-            onDelete: 'CASCADE'
-        });
-    };
+    // User.associate = (models) => {
+    //     models.User.hasMany(models.Book, {
+    //         onDelete: 'CASCADE'
+    //     });
+    // };
 
     return User;
 };
