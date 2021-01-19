@@ -30,10 +30,6 @@
                 <label for="">Feedback</label>
                 <input type="text-area" class="form-control" id="userNotes" placeholder="">
             </div>
-            <div class="form-group">
-                <label for="">User Id</label>
-                <input type="text-area" class="form-control" id="userId" placeholder="">
-            </div>
         </form>
         <br>
         <div class=" text-right">
@@ -50,9 +46,9 @@
         <h2>Bookit List</h2>
 
         <ul>
-            {{#each title}}
+            {{#each books}}
             {{#unless bookedIt}}
-
+                {{> books/book-block read=true}}
             {{/unless}}
             {{/each}}
         </ul>
@@ -62,9 +58,9 @@
     <div class="Booked col-md-6">
         <h2>Booked It List</h2>
         <ul>
-            {{#each title}}
+            {{#each books}}
             {{#if bookedIt}}
-
+                {{> books/book-block read=false}}
             {{/if}}
             {{/each}}
         </ul>

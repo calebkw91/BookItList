@@ -32,17 +32,21 @@ module.exports = (sequelize, DataTypes) => {
         userNotes: {
             type: DataTypes.TEXT,
             allowNull: true
+        },
+        bookedIt: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     });
 
-    Book.associate = (models) => {
-        models.Book.belongsTo(models.User, {
-            onDelete: 'CASCADE',
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Book.associate = (models) => {
+    //     models.Book.belongsTo(models.User, {
+    //         onDelete: 'CASCADE',
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
 
     return Book;
 };
