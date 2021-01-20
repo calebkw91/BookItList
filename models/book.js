@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         year: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: true
         },
         pages: {
             type: DataTypes.INTEGER,
