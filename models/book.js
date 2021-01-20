@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    let Books = sequelize.define(
-        'Books',
+    let Book = sequelize.define(
+        'Book',
         {
             title: {
                 type: DataTypes.STRING,
@@ -34,9 +34,17 @@ module.exports = (sequelize, DataTypes) => {
                 defaultValue: false,
                 allowNull: true,
             },
-        },
-        { freezeTableName: true }
+        }
     );
 
-    return Books;
+    // Book.associate = (models) => {
+    //     models.Book.belongsTo(models.User, {
+    //         onDelete: 'CASCADE',
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
+
+    return Book;
 };

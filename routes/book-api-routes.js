@@ -2,7 +2,7 @@ const db = require('../models');
 
 module.exports = function (app) {
     app.get('/', (req, res) => {
-        db.Books.findAll({}).then((data) => {
+        db.Book.findAll({}).then((data) => {
             let books = [];
             data.forEach((item) => {
                 books.push(item.dataValues);
@@ -25,21 +25,21 @@ module.exports = function (app) {
 
     app.post('/api/add', (req, res) => {
         console.log(req.body);
-        db.Books.create(req.body).then(() => {
+        db.Book.create(req.body).then(() => {
             res.render('index');
         });
     });
 
     app.post('/api/plus', (req, res) => {
         console.log(req.body);
-        db.Books.create(req.body).then(() => {
+        db.Book.create(req.body).then(() => {
             res.render('index');
         });
     });
 
     app.put('/api/bookedit/:id', (req, res) => {
         console.log(req.params);
-        db.Books.update(
+        db.Book.update(
             {
                 bookedIt: 1,
             },
@@ -55,7 +55,7 @@ module.exports = function (app) {
 
     app.delete('/api/bookedit/:id', (req, res) => {
         console.log(req.params);
-        db.Books.destroy({
+        db.Book.destroy({
             where: {
                 id: req.params.id,
             },
