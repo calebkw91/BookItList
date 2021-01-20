@@ -31,8 +31,6 @@ module.exports = function(app) {
     // });
 
     app.post('/api/books', (req, res) => {
-        console.log('here');
-        console.log(req.body);
         db.Book.create(req.body).then((book) => {
             res.json(book);
         });
