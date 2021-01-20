@@ -26,12 +26,8 @@
                 <p class="card-text">{{userNotes}}</p>
             </div>
         </div>
-
-
-        <button class="btn btn-primary btn-md change-read" data-id="{{id}}" data-newread="{{read}}">
-            {{#if read}}You've read this.{{else}}You have not read this.{{/if}}
+        <button class="btn-danger btn-sm" id="trash" data-id="{{id}}" data-bookedIt="{{bookedIt}}">
+            {{#if bookedIt}}<i class="fas fa-book-reader"></i>{{else}}{{/if}}
         </button>
-        <button class="btn btn-primary btn-md delete-button" data-id="{{id}}">Delete</button>
     </div>
 </div>
-</br>
