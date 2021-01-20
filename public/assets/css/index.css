@@ -1,0 +1,25 @@
+h1 {
+    text-align: center;
+    font-family: cursive
+}
+
+.create-form {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+
+.notBooked {
+    float: left;
+    font-size: 24px;
+}
+
+.booked {
+    float: right;
+    font-size: 24px;
+}
+
+h2 {
+    font-family: 'Luckiest Guy', cursive;
+}

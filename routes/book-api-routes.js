@@ -1,48 +1,66 @@
-let db = require('../models');
+const db = require('../models');
 
-module.exports = function(app) {
+module.exports = function (app) {
     app.get('/', (req, res) => {
-        db.Book.findAll({}).then(data => {
+        db.Book.findAll({}).then((data) => {
             let books = [];
             data.forEach((item) => {
                 books.push(item.dataValues);
             });
-            let hbsObject = { books: books};
+            console.log(books);
+            let hbsObject = { books: books };
+            console.log(hbsObject);
+
             res.render('index', hbsObject);
         });
     });
 
-    // app.get('/api/books', (req, res) => {
-    //     db.Book.findAll({
-    //         include: [db.Post]
-    //     }).then((book) => {
-    //         res.json(book);
-    //     });
-    // });
+    app.get('/login', (req, res) => {
+        res.render('login');
+    });
 
-    // app.get('/api/books/:id', (req, res) => {
-    //     db.Book.findOne({
-    //         where: {
-    //             id: req.params.id
-    //         }
-    //     }).then((book) => {
-    //         res.json(book);
-    //     });
-    // });
+    app.get('/add', function (req, res) {
+        res.render('add');
+    });
 
-    app.post('/api/books', (req, res) => {
-        db.Book.create(req.body).then((book) => {
-            res.json(book);
+    app.post('/api/add', (req, res) => {
+        console.log(req.body);
+        db.Book.create(req.body).then(() => {
+            res.render('index');
         });
     });
 
-    // app.delete('/api/books/:id', (req, res) => {
-    //     db.Book.destroy({
-    //         where: {
-    //             id: req.params.id
-    //         }
-    //     }).then((book) => {
-    //         res.json(book);
-    //     });
-    // });
+    app.post('/api/plus', (req, res) => {
+        console.log(req.body);
+        db.Book.create(req.body).then(() => {
+            res.render('index');
+        });
+    });
+
+    app.put('/api/bookedit/:id', (req, res) => {
+        console.log(req.params);
+        db.Book.update(
+            {
+                bookedIt: 1,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                },
+            }
+        ).then(() => {
+            res.render('index');
+        });
+    });
+
+    app.delete('/api/bookedit/:id', (req, res) => {
+        console.log(req.params);
+        db.Book.destroy({
+            where: {
+                id: req.params.id,
+            },
+        }).then(() => {
+            res.render('index');
+        });
+    });
 };
