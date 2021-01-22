@@ -3,6 +3,8 @@
 
 // Requiring our custom middleware for checking if a user is logged in
 let isAuthenticated = require('../config/middleware/isAuthenticated.js');
+// eslint-disable-next-line no-unused-vars
+const db = require('../models');
 
 // Routes
 
@@ -13,7 +15,9 @@ module.exports = function(app) {
         if (req.user) {
             res.redirect('/index');
         }
-        res.render('signup');
+        res.render('login', {
+            layout: 'login'
+        });
     });
 
     app.get('/signup', function(req, res) {
@@ -28,5 +32,13 @@ module.exports = function(app) {
     // If a user who is not logged in tries to access this route they will be redirected to the signup page
     app.get('/index', isAuthenticated, function(req, res) {
         res.render('index');
+    });
+
+    app.get('/add', (req, res) => {
+        res.render('add');
+    });
+
+    app.get('/search', (req, res) => {
+        res.render('search');
     });
 };
