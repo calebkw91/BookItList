@@ -1,22 +1,28 @@
-
+// eslint-disable-next-line no-unused-vars
+const db = require('../models');
 let path = require('path');
 
 // Routes
 module.exports = function(app) {
+    app.get('/', (req, res) => {
+        res.render('login', {
+            layout: 'login'
+        });
+    });
 
-    app.get('/signup', function(req, res) {
+    app.get('/signup', (req, res) => {
         res.render('signup');
     });
 
-    app.get('/cms', function(req, res) {
-        res.sendFile(path.join(__dirname, '../public/cms.html'));
+    app.get('/add', (req, res) => {
+        res.render('add');
     });
 
-    app.get('/index', function(req, res) {
-        res.sendFile(path.join(__dirname, '../public/index.html'));
+    app.get('/search', (req, res) => {
+        res.render('search');
     });
 
-    app.get('/authors', function(req, res) {
+    app.get('/authors', (req, res) => {
         res.sendFile(path.join(__dirname, '../public/author-manager.html'));
     });
 

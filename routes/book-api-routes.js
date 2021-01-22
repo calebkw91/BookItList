@@ -1,7 +1,8 @@
 const db = require('../models');
 
 module.exports = function (app) {
-    app.get('/', (req, res) => {
+
+    app.get('/dashboard', (req, res) => {
         db.Book.findAll({}).then((data) => {
             let books = [];
             data.forEach((item) => {
@@ -34,7 +35,7 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/api/plus', (req, res) => {
+    app.post('/api/dashboard', (req, res) => {
         console.log(req.body);
         db.Book.create(req.body).then(() => {
             res.render('index');

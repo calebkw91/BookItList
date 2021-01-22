@@ -1,44 +1,37 @@
 <header>
-    <h1>BookitList</h1>
-    <div style="text-align: center;">
-        <form action="">
-            <div>
-                <label for=""></label>
-                <input type="text" id="bookSearch">
-                <button type="submit" class="btn btn-primary btn-md" id="search">
-                    <span class="fa fa-search"></span>
-
-                </button>
-            </div>
-        </form>
-        <a href="/add" class="btn btn-primary btn-md">
-            <span class="fas fa-book"></span> Add to Bookitlist</a>
-    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <h1>BookitList</h1>
+    </nav>
 </header>
-<br>
-<div class="row">
-    <div class="notBooked col-md-6">
-        <h2>Bookit List</h2>
-        <ul>
+<div class="container">
+    <br>
+    <div>
+        <h1>Welcome Username!</h1>
+        <p>Books on your BookitList</p>
+        <a href="/search" class="btn btn-primary btn-md">
+            <span class="fas fa-book"></span> Search for Books</a>
+    </div>
+    <br>
+    <div class="row">
+        <div class="notBooked col-md-12">
+            <h2>Bookit List</h2>
             {{#each books}}
             {{#unless bookedIt}}
             {{> books/not-bookedIt-block bookedIt=false}}
             {{/unless}}
             {{/each}}
-        </ul>
+        </div>
     </div>
-
-    <div class="booked col-md-6">
-        <h2>Booked It List</h2>
-        <ul>
-            {{#each books}}
-            {{#if bookedIt}}
-            {{> books/bookedIt-block bookedIt=true}}
-            {{/if}}
-            {{/each}}
-        </ul>
+    <div class="row">
+        <div class="booked col-md-12">
+            <h2>Booked It List</h2>
+            <ul>
+                {{#each books}}
+                {{#if bookedIt}}
+                {{> books/bookedIt-block bookedIt=true}}
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-12-md search-results"></div>
 </div>
