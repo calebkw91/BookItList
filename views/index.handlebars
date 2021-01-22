@@ -1,37 +1,30 @@
-<header>
-    <nav class="navbar navbar-dark bg-dark">
-        <h1>BookitList</h1>
-    </nav>
-</header>
-<div class="container">
-    <br>
-    <div>
-        <h1>Welcome Username!</h1>
-        <p>Books on your BookitList</p>
-        <a href="/search" class="btn btn-primary btn-md">
-            <span class="fas fa-book"></span> Search for Books</a>
+<br>
+<div>
+    <h1>Welcome Username!</h1>
+    <p>Books on your BookitList</p>
+    <a href="/search" class="btn btn-primary btn-md">
+        <span class="fas fa-book"></span> Search for Books</a>
+</div>
+<br>
+<div class="row">
+    <div class="notBooked col-md-12">
+        <h2>Bookit List</h2>
+        {{#each books}}
+        {{#unless bookedIt}}
+        {{> books/not-bookedIt-block bookedIt=false}}
+        {{/unless}}
+        {{/each}}
     </div>
-    <br>
-    <div class="row">
-        <div class="notBooked col-md-12">
-            <h2>Bookit List</h2>
+</div>
+<div class="row">
+    <div class="booked col-md-12">
+        <h2>Booked It List</h2>
+        <ul>
             {{#each books}}
-            {{#unless bookedIt}}
-            {{> books/not-bookedIt-block bookedIt=false}}
-            {{/unless}}
+            {{#if bookedIt}}
+            {{> books/bookedIt-block bookedIt=true}}
+            {{/if}}
             {{/each}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="booked col-md-12">
-            <h2>Booked It List</h2>
-            <ul>
-                {{#each books}}
-                {{#if bookedIt}}
-                {{> books/bookedIt-block bookedIt=true}}
-                {{/if}}
-                {{/each}}
-            </ul>
-        </div>
+        </ul>
     </div>
 </div>

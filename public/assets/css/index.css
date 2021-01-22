@@ -1,5 +1,5 @@
-header {
-    color: white;
+.nav-wrapper {
+    background-color: maroon !important;
 }
 
 .create-form {
