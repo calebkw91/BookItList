@@ -11,7 +11,7 @@
 - [Questions](#questions)
         
 ## Description:
-    This project is a bucket list for books. After a user is logged in they are able to search books using a Google API. They are then able to add the books to a list of books they want to read. They are then able to move books from a want to read to already read, as well as comment on each book. This information should be tied to the user and maintain itself in the database when not actively logged in.
+This project is a bucket list for books. After a user is logged in they are able to search books using a Google API. They are then able to add the books to a list of books they want to read. They are then able to move books from a want to read to already read, as well as comment on each book. This information should be tied to the user and maintain itself in the database when not actively logged in.
             
 ## Installation:
     If using from the Heroku link, no installation is required beyond a basic web browser.
@@ -21,13 +21,13 @@
     Heroku Link to active site: [https://bookit-list.herokuapp.com](https://bookit-list.herokuapp.com)
 
 ## License:
-    MIT
+MIT
     
 ## Contributions:
-    Heroku, GitHub, Google, Express, Sequelize, Handlebars, Travis, Eslint, Passport
+Heroku, GitHub, Google, Express, Sequelize, Handlebars, Travis, Eslint, Passport
 
 ## Tests:
-    no
+no
 
 ## Questions:
 Questions about the project can either be directed to:
