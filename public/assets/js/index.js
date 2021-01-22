@@ -1,5 +1,6 @@
 /* eslint-disable no-use-before-define */
 $(function () {
+    let bookArr = [];
     let toExpServer = (bookObj) => {
         console.log(bookObj);
         $.ajax('/api/dashboard', {
@@ -20,45 +21,48 @@ $(function () {
                 url: apiUrl,
                 method: 'GET',
             }).then((response) => {
-                console.log(response);
-                let title = response.items[0].volumeInfo.title;
-                let author = response.items[0].volumeInfo.authors[0];
-                let genre = response.items[0].volumeInfo.categories[0];
-                let year = parseInt(response.items[0].volumeInfo.publishedDate);
-                let pages = parseInt(response.items[0].volumeInfo.pageCount);
-                console.log(year);
+                for (let i = 0; i < response.items.length; i++) {
+                    const volumeInfo = response.items[i].volumeInfo;
+                    const title = volumeInfo.title ? volumeInfo.title : 'Unknown';
+                    const author = volumeInfo.authors ? volumeInfo.authors[0] : 'Unknown';
+                    const genre = volumeInfo.categories ? volumeInfo.categories[0] : 'Unknown';
+                    const year = volumeInfo.publishedDate ? volumeInfo.publishedDate : 'Unknown';
+                    const pages = typeof volumeInfo.pageCount === 'number' ? parseInt(volumeInfo.pageCount) : 'Unknown';
 
-                let bookObj = {
-                    title: title,
-                    author: author,
-                    genre: genre,
-                    year: year,
-                    pages: pages,
-                };
-                generateBookSearchResults(bookObj);
+                    let bookObj = {
+                        title: title,
+                        author: author,
+                        genre: genre,
+                        year: year,
+                        pages: pages,
+                    };
+                    bookArr.push(bookObj);
+                    console.log(bookArr);
+                    generateBookSearchResults(bookObj, i);
+                }
             });
         });
     };
 
-    let generateBookSearchResults = (book) => {
+    let generateBookSearchResults = (book, iterator) => {
         let searchResultsDiv = $('.search-results');
         let newCard = $('<div>').addClass('card');
         let cardHeader = $('<div>').addClass('card-header');
-        let cardHeaderTitle = $('<h4>').addClass('title').text(book.title);
+        let cardHeaderTitle = $('<h4>').addClass(`title${iterator}`).text(book.title);
         cardHeader.append(cardHeaderTitle);
 
         let cardBody = $('<div>').addClass('card-body');
         let infoRow = $('<div>').addClass('row');
         let titleCol = $('<div>').addClass('col-6');
         let authorHeader = $('<h5>').addClass('card-title').text('Author');
-        let authorEl = $('<p>').addClass('card-text author').text(book.author);
+        let authorEl = $('<p>').addClass(`card-text author${iterator}`).text(book.author);
         let genreHeader = $('<h5>').addClass('card-title').text('Genre');
-        let genreEl = $('<p>').addClass('card-text genre').text(book.genre);
+        let genreEl = $('<p>').addClass(`card-text genre${iterator}`).text(book.genre);
         let yearCol = $('<div>').addClass('col-6');
         let yearHeader = $('<h5>').addClass('card-title').text('Year');
-        let yearEl = $('<p>').addClass('card-text year').text(book.year);
+        let yearEl = $('<p>').addClass(`card-text year${iterator}`).text(book.year);
         let pagesHeader = $('<h5>').addClass('card-title').text('Pages');
-        let pagesEl = $('<p>').addClass('card-text pages').text(book.pages);
+        let pagesEl = $('<p>').addClass(`card-text pages${iterator}`).text(book.pages);
 
         let notesRow = $('<div>').addClass('row');
         let notesCol = $('<div>').addClass('col-12');
@@ -66,7 +70,7 @@ $(function () {
         let notesLabel = $('<label>').text('Notes');
         let notesInput = $('<input>').attr('type', 'text-area').addClass('form-control user-notes');
 
-        let saveBookBtn = $('<button>').addClass('btn btn-primary-md save-book');
+        let saveBookBtn = $('<button>').addClass(`btn btn-primary-md save-book iterate${iterator}`);
         saveBookBtn.data('title', book.title);
         saveBookBtn.data('author', book.author);
         saveBookBtn.data('genre', book.genre);
@@ -78,6 +82,7 @@ $(function () {
         let br2 = $('<br>');
         let br3 = $('<br>');
         let br4 = $('<br>');
+
         titleCol.append(authorHeader);
         titleCol.append(authorEl);
         titleCol.append(genreHeader);
@@ -89,6 +94,7 @@ $(function () {
         infoRow.append(titleCol);
         infoRow.append(yearCol);
         cardBody.append(infoRow);
+
         notesForm.append(notesLabel);
         notesForm.append(notesInput);
         saveBookBtn.append(bookIcon);
@@ -99,6 +105,7 @@ $(function () {
         notesRow.append(notesCol);
         cardBody.append(br2);
         cardBody.append(notesRow);
+
         newCard.append(br3);
         newCard.append(cardHeader);
         newCard.append(cardBody);
@@ -134,24 +141,9 @@ $(function () {
 
     $(document).on('click', '.save-book', (e) => {
         e.preventDefault();
-        // let userNotes = $('.user-notes').val().trim();
-        let title = $('.title').text();
-        let author = $('.author').text();
-        let genre = $('.genre').text();
-        let year = parseInt($('.year').text());
-        let pages = parseInt($('.pages').text());
-        let userNotes = $('.user-notes').val().trim();
-        console.log(userNotes);
-        let bookObj = {
-            title: title,
-            author: author,
-            genre: genre,
-            year: year,
-            pages: pages,
-            userNotes: userNotes
-        };
-
-        toExpServer(bookObj);
+        let savebtnNum = e.currentTarget.classList[3];
+        let savebtnClassNum = savebtnNum.charAt(savebtnNum.length - 1);
+        toExpServer(bookArr[savebtnClassNum]);
     });
 
     $('#read').on('click', function () {
