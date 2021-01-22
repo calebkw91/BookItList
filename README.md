@@ -32,4 +32,4 @@ no
 ## Questions:
 Questions about the project can either be directed to:
 [GitHub Profile](https://github.com/flynn0087, https://github.com/calebkw91, https://github.com/Meechlouch, https://github.com/BeresIvan)
-Email: flynn0087@gmail.com, ?, ?, ?
+Email: flynn0087@gmail.com, walke1291@gmail.com, ?, ?
