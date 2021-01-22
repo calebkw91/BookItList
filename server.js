@@ -5,9 +5,10 @@
 // *** Dependencies
 // =============================================================
 const express = require('express');
-let session = require("express-session");
+const session = require('express-session');
+
 // Requiring passport as we've configured it
-let passport = require("./config/passport");
+let passport = require('./config/passport');
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -25,7 +26,7 @@ app.use(express.static('public'));
 
 // We need to use sessions to keep track of our user's login status
 
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
