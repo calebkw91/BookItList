@@ -121,7 +121,7 @@ $(function () {
     };
 
     $.get('/api/user_data').then(function(data) {
-        $('#user-name').text(`Welcome ${data.email}`);
+        $('#user-name').text(`Welcome ${data.username}`);
     });
 
     $('#addBook').on('click', function (event) {
