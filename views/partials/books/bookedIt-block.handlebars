@@ -26,8 +26,8 @@
                 <p class="card-text">{{userNotes}}</p>
             </div>
         </div>
-        <button class="btn-danger btn-sm" id="trash" data-id="{{id}}" data-bookedIt="{{bookedIt}}">
-            {{#if bookedIt}}<i class="fas fa-book-reader"></i>{{else}}{{/if}}
+        <button type="button" class="btn-danger btn-sm trash" data-id="{{id}}" data-bookedIt="{{bookedIt}}">
+            <span class="fas fa-book-reader" data-id="{{id}}" data-bookedIt="{{bookedIt}}"></span>
         </button>
     </div>
 </div>

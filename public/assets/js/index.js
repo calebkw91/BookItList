@@ -37,7 +37,6 @@ $(function () {
                         pages: pages,
                     };
                     bookArr.push(bookObj);
-                    console.log(bookArr);
                     generateBookSearchResults(bookObj, i);
                 }
             });
@@ -146,9 +145,13 @@ $(function () {
         toExpServer(bookArr[savebtnClassNum]);
     });
 
-    $('#read').on('click', function () {
-        let id = $(this).data('id');
-        let newBookedIt = $(this).data('newBookedIt');
+    $(document).on('click', '.read', (event) => {
+        console.log(event.target);
+        console.log($(this));
+        let id = $(event.target).data('id');
+        console.log(id);
+        let newBookedIt = $(event.target).data('bookedit');
+        console.log(newBookedIt);
 
         let newBookedItTitle = {
             bookedIt: newBookedIt,
@@ -162,8 +165,8 @@ $(function () {
         });
     });
 
-    $('#trash').on('click', function () {
-        let id = $(this).data('id');
+    $(document).on('click', '.trash', (event) => {
+        let id = $(event.target).data('id');
         $.ajax(`/api/bookedit/${id}`, {
             type: 'DELETE',
         }).then(() => {
