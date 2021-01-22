@@ -13,7 +13,7 @@ $(function () {
     };
 
     let apiCalls = (search) => {
-        const key = 'AIzaSyAjv43Z46qv4Nf91iQnXlIQ2Dr1hdj2_n0';
+        const key = process.env.GOOGLE_API_KEY;
         let apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${search}+intitle:${search}&key=${key}`;
         $.ajax({
             url: apiUrl,
