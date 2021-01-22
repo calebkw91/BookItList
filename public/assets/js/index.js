@@ -120,6 +120,10 @@ $(function () {
         searchResultsDiv.append(newCard);
     };
 
+    $.get('/api/user_data').then(function(data) {
+        $('#user-name').text(`Welcome ${data.email}`);
+    });
+
     $('#addBook').on('click', function (event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();

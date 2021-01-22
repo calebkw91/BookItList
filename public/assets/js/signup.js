@@ -20,10 +20,10 @@ $(document).ready(function() {
         passwordInput.val('');
     });
 
-    function handleLoginErr(err) {
-        $('#alert .msg').text(err.responseJSON);
-        $('#alert').fadeIn(500);
-    }
+    // function handleLoginErr(err) {
+    //     $('#alert .msg').text(err.responseJSON);
+    //     $('#alert').fadeIn(500);
+    // }
 
     function signUpUser(email, password) {
         $.post('/api/signup', {
@@ -32,6 +32,7 @@ $(document).ready(function() {
         }).then(function() {
             window.location.replace('/login');
         // If there's an error, handle it by throwing up a bootstrap alert
-        }).catch(handleLoginErr);
+        });
+        // .catch(handleLoginErr);
     }
 });
