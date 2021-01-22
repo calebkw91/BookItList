@@ -24,7 +24,7 @@ $(function () {
             let author = response.items[0].volumeInfo.authors[0];
             let genre = response.items[0].volumeInfo.categories[0];
             let year = parseInt(response.items[0].volumeInfo.publishedDate);
-            let pages = parseInt(response.items[0].volumeInfo.pageCount);
+            let pages = parseInt(response.items[0].volumeInfo.pageCount)
             console.log(year);
 
             let bookObj = {
