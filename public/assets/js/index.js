@@ -21,6 +21,7 @@ $(function () {
                 url: apiUrl,
                 method: 'GET',
             }).then((response) => {
+                console.log(response);
                 for (let i = 0; i < response.items.length; i++) {
                     const volumeInfo = response.items[i].volumeInfo;
                     const title = volumeInfo.title ? volumeInfo.title : 'Unknown';
@@ -28,6 +29,7 @@ $(function () {
                     const genre = volumeInfo.categories ? volumeInfo.categories[0] : 'Unknown';
                     const year = volumeInfo.publishedDate ? volumeInfo.publishedDate : 'Unknown';
                     const pages = typeof volumeInfo.pageCount === 'number' ? parseInt(volumeInfo.pageCount) : 'Unknown';
+                    const img = volumeInfo.imageLinks.thumbnail ? volumeInfo.imageLinks.thumbnail : 'Unknown';
 
                     let bookObj = {
                         title: title,
@@ -35,6 +37,7 @@ $(function () {
                         genre: genre,
                         year: year,
                         pages: pages,
+                        img: img
                     };
                     bookArr.push(bookObj);
                     generateBookSearchResults(bookObj, i);
@@ -52,16 +55,19 @@ $(function () {
 
         let cardBody = $('<div>').addClass('card-body');
         let infoRow = $('<div>').addClass('row');
-        let titleCol = $('<div>').addClass('col-6');
+        let titleCol = $('<div>').addClass('col-4');
         let authorHeader = $('<h5>').addClass('card-title').text('Author');
         let authorEl = $('<p>').addClass(`card-text author${iterator}`).text(book.author);
         let genreHeader = $('<h5>').addClass('card-title').text('Genre');
         let genreEl = $('<p>').addClass(`card-text genre${iterator}`).text(book.genre);
-        let yearCol = $('<div>').addClass('col-6');
+        let yearCol = $('<div>').addClass('col-4');
         let yearHeader = $('<h5>').addClass('card-title').text('Year');
         let yearEl = $('<p>').addClass(`card-text year${iterator}`).text(book.year);
         let pagesHeader = $('<h5>').addClass('card-title').text('Pages');
         let pagesEl = $('<p>').addClass(`card-text pages${iterator}`).text(book.pages);
+        let imgCol = $('<div>').addClass('col-4');
+        let imgEl = $('<img>').attr('src', book.img);
+        imgEl.attr('style', 'max-width:100px');
 
         let notesRow = $('<div>').addClass('row');
         let notesCol = $('<div>').addClass('col-12');
@@ -90,8 +96,10 @@ $(function () {
         yearCol.append(yearEl);
         yearCol.append(pagesHeader);
         yearCol.append(pagesEl);
+        imgCol.append(imgEl);
         infoRow.append(titleCol);
         infoRow.append(yearCol);
+        infoRow.append(imgCol);
         cardBody.append(infoRow);
 
         notesForm.append(notesLabel);
