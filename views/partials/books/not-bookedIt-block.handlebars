@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <button class="btn-success btn-sm" id="read" data-id="{{this.id}}" data-bookedIt="{{this.bookedIt}}">
-            {{#if bookedIt}}{{else}}<i class="fa fa-book"></i>{{/if}} </button>
+        <button type="button" class="btn-success btn-sm read" data-id="{{this.id}}" data-bookedIt="{{this.bookedIt}}">
+            <span class="fa fa-book" data-id="{{this.id}}" data-bookedIt="{{this.bookedIt}}"></span>
     </div>
 </div>
