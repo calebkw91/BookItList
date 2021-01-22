@@ -2,7 +2,7 @@
 $(function () {
     let toExpServer = (bookObj) => {
         console.log(bookObj);
-        $.ajax('/api/plus', {
+        $.ajax('/api/dashboard', {
             type: 'POST',
             data: bookObj,
         }).then(function () {
