@@ -1,3 +1,4 @@
+require('dotenv').config();
 /* eslint-disable no-use-before-define */
 $(function () {
     let toExpServer = (bookObj) => {
