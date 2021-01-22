@@ -18,7 +18,7 @@ This project is a bucket list for books. After a user is logged in they are able
         
 ## Usage:
     For anyone who reads a lot and wants to keep a list of books they intend to read, as well as notes about books they have already read. 
-    Heroku Link to active site: [a link](https://bookit-list.herokuapp.com)
+    Heroku Link to active site: [link to Heroku!](https://bookit-list.herokuapp.com)
 
 ## License:
 MIT
