@@ -5,35 +5,38 @@ $(function () {
         $.ajax('/api/dashboard', {
             type: 'POST',
             data: bookObj,
-        }).then(function () {
+        }).then(() => {
             // Reloads the page to get the updated list
             location.reload();
         });
     };
 
     let apiCalls = (search) => {
-        const key = 'AIzaSyAjv43Z46qv4Nf91iQnXlIQ2Dr1hdj2_n0';
-        let apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${search}+intitle:${search}&key=${key}`;
-        $.ajax({
-            url: apiUrl,
-            method: 'GET',
-        }).then((response) => {
-            console.log(response);
-            let title = response.items[0].volumeInfo.title;
-            let author = response.items[0].volumeInfo.authors[0];
-            let genre = response.items[0].volumeInfo.categories[0];
-            let year = parseInt(response.items[0].volumeInfo.publishedDate);
-            let pages = parseInt(response.items[0].volumeInfo.pageCount);
-            console.log(year);
+        $.ajax('api/key', {
+            type: 'GET'
+        }).then((key) => {
+            let apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${search}+intitle:${search}&key=${key}`;
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+            }).then((response) => {
+                console.log(response);
+                let title = response.items[0].volumeInfo.title;
+                let author = response.items[0].volumeInfo.authors[0];
+                let genre = response.items[0].volumeInfo.categories[0];
+                let year = parseInt(response.items[0].volumeInfo.publishedDate);
+                let pages = parseInt(response.items[0].volumeInfo.pageCount);
+                console.log(year);
 
-            let bookObj = {
-                title: title,
-                author: author,
-                genre: genre,
-                year: year,
-                pages: pages,
-            };
-            generateBookSearchResults(bookObj);
+                let bookObj = {
+                    title: title,
+                    author: author,
+                    genre: genre,
+                    year: year,
+                    pages: pages,
+                };
+                generateBookSearchResults(bookObj);
+            });
         });
     };
 

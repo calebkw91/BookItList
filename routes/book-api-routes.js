@@ -16,7 +16,19 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/api/dashboard', (req, res) => {
+    app.get('/login', (req, res) => {
+        res.render('login');
+    });
+
+    app.get('/add', function (req, res) {
+        res.render('add');
+    });
+
+    app.get('/api/key', (req, res) => {
+        res.send(process.env.GOOGLE_API_KEY);
+    });
+
+    app.post('/api/add', (req, res) => {
         console.log(req.body);
         db.Book.create(req.body).then(() => {
             res.render('index');
