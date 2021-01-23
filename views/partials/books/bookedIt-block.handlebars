@@ -29,9 +29,9 @@
                 <p class="card-text">{{userNotes}}</p>
             </div>
         </div>
-        <button type="button" class="btn-warning btn-sm edit" data-id="{{id}}">
+        <a href="/edit" class="btn-warning btn-sm edit" data-id="{{id}}" style="margin-right: 10px;">
             <span data-id="{{id}}">Edit</span>
-        </button>
+        </a>
         <button type="button" class="btn-danger btn-sm trash" data-id="{{id}}" data-bookedIt="{{bookedIt}}">
             <span class="fas fa-book-reader" data-id="{{id}}" data-bookedIt="{{bookedIt}}"></span>
         </button>
