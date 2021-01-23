@@ -32,7 +32,12 @@ module.exports = function (app) {
     });
 
     app.get('/add', function (req, res) {
-        res.render('add');
+        if(req.user) {
+            userId = req.user.id;
+            res.render('add');
+        } else {
+            res.render('login');
+        }
     });
 
     app.get('/api/key', (req, res) => {
