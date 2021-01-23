@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: true,
             },
             pages: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 allowNull: true,
             },
             userNotes: {
@@ -41,14 +41,14 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
 
-    // Book.associate = (models) => {
-    //     models.Book.belongsTo(models.User, {
-    //         onDelete: 'CASCADE',
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Book.associate = (models) => {
+        models.Book.belongsTo(models.User, {
+            onDelete: 'CASCADE',
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
 
     return Book;
 };
