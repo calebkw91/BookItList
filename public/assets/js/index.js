@@ -172,6 +172,8 @@ $(function () {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
         let search = $('#bookSearch').val().trim();
+        let searchResultsDiv = $('.search-results');
+        searchResultsDiv.empty();
 
         if (search) {
             apiCalls(search);
