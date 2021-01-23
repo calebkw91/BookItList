@@ -7,7 +7,7 @@
 </div>
 <br>
 <div class="row">
-    <div class="notBooked col-md-6">
+    <div class="notBooked col-md-5">
         <h3>Bookit List</h3>
         {{#each books}}
         {{#unless bookedIt}}
@@ -15,7 +15,8 @@
         {{/unless}}
         {{/each}}
     </div>
-    <div class="booked col-md-6">
+    <div class="col-md-2"></div>
+    <div class="booked col-md-5">
         <h3>Booked It List</h3>
         <ul>
             {{#each books}}
