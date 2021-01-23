@@ -24,14 +24,13 @@ Heroku Link to active site: [link to Heroku!](https://bookit-list.herokuapp.com)
 MIT
     
 ## Contributions:
-Heroku, GitHub, Google, Express, Sequelize, Handlebars, Travis, Eslint, Passport
+GitHub and emails for all contributors to this project.
 
-## Tests:
-no
+[Ben Flynn: ](https://github.com/flynn0087)  flynn0087@gmail.com</br>
+[Caleb Walker: ](https://github.com/calebkw91)  walke1291@gmail.com</br>
+[Ivan Beres: ](https://github.com/BeresIvan)  ivberes@gmail.com</br>
+[Demetri Dillard: ](https://github.com/Meechlouch)  meechlouch@gmail.com
 
 ## Questions:
-Questions about the project can either be directed to:
-[GitHub Profile](https://github.com/flynn0087, https://github.com/calebkw91, https://github.com/Meechlouch, https://github.com/BeresIvan)
-
-Email: flynn0087@gmail.com, walke1291@gmail.com, meechlouch@gmail.com, ivberes@gmail.com
+Questions about the project can either be directed to any 4 of the above contributors.
 
