@@ -1,14 +1,14 @@
-<h1>Add a Bookit</h1>
+<h1>Edit a Bookit</h1>
 
 <div class="card">
     <div class="card-header">
-        Add Books
+        Edit Books
     </div>
     <div class="card-body">
-        <form action="/bookit/add" method="POST" role="form">
+        <form action="/bookit/update" method="POST" role="form">
             <div class="form-group">
                 <label for="">Title</label>
-                <input type="text" class="form-control" id="title" value="{{title}}">
+                <input type="text" class="form-control" id="title" data-id="{{id}}" value="{{title}}">
             </div>
             <div class="form-group">
                 <label for="">Author</label>
