@@ -21,7 +21,6 @@ $(function () {
                 url: apiUrl,
                 method: 'GET',
             }).then((response) => {
-                console.log(response);
                 for (let i = 0; i < response.items.length; i++) {
                     const volumeInfo = response.items[i].volumeInfo;
                     const title = volumeInfo.title ? volumeInfo.title : 'Unknown';
@@ -38,6 +37,7 @@ $(function () {
                         year: year,
                         pages: pages,
                         img: img,
+                        userNotes: '',
                         UserId: userId
                     };
                     bookArr.push(bookObj);
@@ -74,7 +74,8 @@ $(function () {
         let notesCol = $('<div>').addClass('col-12');
         let notesForm = $('<div>').addClass('form-group');
         let notesLabel = $('<label>').text('Notes');
-        let notesInput = $('<input>').attr('type', 'text-area').addClass('form-control user-notes');
+        let notesInput = $('<input>').attr('type', 'text-area').addClass('form-control');
+        notesInput.attr('id', `user-notes${iterator}`);
 
         let saveBookBtn = $('<button>').addClass(`btn btn-primary-md save-book iterate${iterator}`);
         saveBookBtn.data('title', book.title);
@@ -157,6 +158,8 @@ $(function () {
         e.preventDefault();
         let savebtnNum = e.currentTarget.classList[3];
         let savebtnClassNum = savebtnNum.charAt(savebtnNum.length - 1);
+        let userNotesInput = $(`input#user-notes${savebtnClassNum}`).val().trim();
+        bookArr[savebtnClassNum].userNotes = userNotesInput;
         toExpServer(bookArr[savebtnClassNum]);
     });
 

@@ -1,0 +1,44 @@
+<h1>Add a Bookit</h1>
+
+<div class="card">
+    <div class="card-header">
+        Add Books
+    </div>
+    <div class="card-body">
+        <form action="/bookit/add" method="POST" role="form">
+            <div class="form-group">
+                <label for="">Title</label>
+                <input type="text" class="form-control" id="title" value="{{title}}">
+            </div>
+            <div class="form-group">
+                <label for="">Author</label>
+                <input type="text" class="form-control" id="author" value="{{author}}">
+            </div>
+            <div class="form-group">
+                <label for="">Genre</label>
+                <input type="text" class="form-control" id="genre" value="{{genre}}">
+            </div>
+            <div class="form-group">
+                <label for="">Year</label>
+                <input type="text" class="form-control" id="year" value="{{year}}">
+            </div>
+            <div class="form-group">
+                <label for="">Pages</label>
+                <input type="number" class="form-control" id="pages" value="{{pages}}">
+            </div>
+            <div class="form-group">
+                <label for="">Notes</label>
+                <input type="text-area" class="form-control" id="userNotes" value="{{userNotes}}">
+            </div>
+        </form>
+        <br>
+        <div class=" text-right">
+            <button type="submit" class="btn btn-primary btn-md" id="updateBook">
+                <span class="fa fa-book" id="updateBook"> Update</span>
+            </button>
+            <a href="/dashboard" class="btn btn-success btn-md">
+                <span class="fas fa-book-reader"></span> Bookitlist</a>
+        </div>
+    </div>
+
+</div>
