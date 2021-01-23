@@ -1,24 +1,22 @@
 <br>
 <div>
-    <h1 id="user-name">Welcome Username!</h1>
+    <h2 id="user-name">Welcome Username!</h2>
     <p>Books on your BookitList</p>
     <a href="/search" class="btn btn-primary btn-md">
         <span class="fas fa-book"></span> Search for Books</a>
 </div>
 <br>
 <div class="row">
-    <div class="notBooked col-md-12">
-        <h2>Bookit List</h2>
+    <div class="notBooked col-md-6">
+        <h3>Bookit List</h3>
         {{#each books}}
         {{#unless bookedIt}}
         {{> books/not-bookedIt-block bookedIt=false}}
         {{/unless}}
         {{/each}}
     </div>
-</div>
-<div class="row">
-    <div class="booked col-md-12">
-        <h2>Booked It List</h2>
+    <div class="booked col-md-6">
+        <h3>Booked It List</h3>
         <ul>
             {{#each books}}
             {{#if bookedIt}}
