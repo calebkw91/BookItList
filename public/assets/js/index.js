@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
 $(function () {
     let bookArr = [];
+    let userId;
     let toExpServer = (bookObj) => {
-        console.log(bookObj);
-        $.ajax('/api/dashboard', {
+        $.ajax('/api/add', {
             type: 'POST',
             data: bookObj,
         }).then(() => {
@@ -37,7 +37,8 @@ $(function () {
                         genre: genre,
                         year: year,
                         pages: pages,
-                        img: img
+                        img: img,
+                        UserId: userId
                     };
                     bookArr.push(bookObj);
                     generateBookSearchResults(bookObj, i);
@@ -120,6 +121,12 @@ $(function () {
         searchResultsDiv.append(newCard);
     };
 
+    $.get('/api/user_data').then(function(data) {
+        $('#user-name').text(`Welcome ${data.username}`);
+        userId = data.id;
+        $.get('/dashboard');
+    });
+
     $('#addBook').on('click', function (event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
@@ -131,6 +138,7 @@ $(function () {
             year: $('#year').val().trim(),
             pages: $('#pages').val().trim(),
             userNotes: $('#userNotes').val().trim(),
+            UserId: userId
         };
         toExpServer(newBookit);
     });
@@ -139,7 +147,6 @@ $(function () {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
         let search = $('#bookSearch').val().trim();
-        console.log(search);
 
         if (search) {
             apiCalls(search);
@@ -154,12 +161,8 @@ $(function () {
     });
 
     $(document).on('click', '.read', (event) => {
-        console.log(event.target);
-        console.log($(this));
         let id = $(event.target).data('id');
-        console.log(id);
         let newBookedIt = $(event.target).data('bookedit');
-        console.log(newBookedIt);
 
         let newBookedItTitle = {
             bookedIt: newBookedIt,
@@ -169,7 +172,7 @@ $(function () {
             type: 'PUT',
             data: newBookedItTitle,
         }).then(() => {
-            location.reload();
+            location.href='/dashboard';
         });
     });
 
@@ -178,7 +181,7 @@ $(function () {
         $.ajax(`/api/bookedit/${id}`, {
             type: 'DELETE',
         }).then(() => {
-            location.reload();
+            location.href='/dashboard';
         });
     });
 });
