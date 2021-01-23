@@ -39,6 +39,28 @@ module.exports = function (app) {
         res.send(process.env.GOOGLE_API_KEY);
     });
 
+    app.get('/edit/:id', (req, res) => {
+        db.Book.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then((data) => {
+            let hbsObject = data.dataValues;
+            res.render('edit', hbsObject);
+        });
+    });
+
+    app.put('/api/edit', (req, res) => {
+        db.Book.update(
+            req.body, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function() {
+            res.render('index');
+        });
+    });
+
     app.post('/api/add', (req, res) => {
         db.Book.create(req.body).then(() => {
             res.render('index');
