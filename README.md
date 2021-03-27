@@ -1,5 +1,8 @@
 ![License](https://img.shields.io/badge/License-MIT-green.svg "License Badge")
 # BookIt-List 
+
+
+![screenshot](public/assets/images/homepage_screenshot.png "Homepage Screenshot")
     
 # Table of Contents
 - [Description](#description)
